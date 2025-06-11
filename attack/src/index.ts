@@ -20,7 +20,8 @@ async function sendRequest(otp: number) {
   } catch {}
 }
 
-/*promise all logic is to batching the request */
+/*promise all logic is to batching the request this is used because each nodejs process take some time and we are sending to many request before
+they get resolved we send another request so we will run out of memory to prevent this we send request in batches*/
 async function main() {
   for (let i = 0; i < 1000000; i += 100) {
     const promises = [];
